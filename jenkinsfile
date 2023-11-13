@@ -28,7 +28,7 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry("https://registry.hub.docker.com", 'mydocker-creds') {    
-                    docker.image("${env.BUILD_NUMBER}").push()
+                    docker.image("fareedTest:${env.BUILD_NUMBER}").push()
                     // docker.withRegistry("https://registry.hub.docker.com",'mydocker-creds')
                     // dockerImage.push("${env.BUILD_NUMBER}")
                 }
