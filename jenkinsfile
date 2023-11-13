@@ -1,6 +1,11 @@
 pipeline{
     agent any
     tools {nodejs "node"}
+    enviroment {
+        imageName = "cicd/test-app"
+        registryCredential = "fareedgeoo"
+        dockerImage = ''
+    }
     stages{
         stage("install dependancies"){
             steps{
@@ -12,5 +17,20 @@ pipeline{
                         sh "npm test"
                     }
                 }
+        stage("building image"){
+            steps{
+                script{
+                    dockerImage = docker.build imageName
+                }
             }
+        }
+        stage("deploy image"){
+            steps{
+                script{
+                    docker.withRegistry("https:registry.hub.docker.com",'mydocker-creds')
+                    dockerImage.push("${env.BUILD_NUMBER}")
+                }
+            }
+        }
+    }
 }
