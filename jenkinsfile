@@ -3,7 +3,7 @@ pipeline{
     tools {nodejs "node"}
     environment {
         imageName = "cicd/test-app"
-        registryCredential = "fareedgeoo"
+        registryCredential = "cicd"
         dockerImage = ''
     }
     stages{
