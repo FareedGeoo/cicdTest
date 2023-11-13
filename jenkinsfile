@@ -27,7 +27,7 @@ pipeline{
         stage("deploy image"){
             steps{
                 script{
-                    docker.withRegistry("https:registry.hub.docker.com",'mydocker-creds')
+                    docker.withRegistry("https://registry.hub.docker.com",'mydocker-creds')
                     dockerImage.push("${env.BUILD_NUMBER}")
                 }
             }
