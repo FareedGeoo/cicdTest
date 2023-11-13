@@ -2,7 +2,7 @@ pipeline{
     agent any
     tools {nodejs "node"}
     environment {
-        imageName = "cicd/test-app"
+        imageName = "fareedgeoo/test-app"
         registryCredential = "fareedgeoo"
         dockerImage = ''
     }
